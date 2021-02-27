@@ -43,7 +43,10 @@ public class Transacao {
 	@JoinColumn(name = "id_conta_destino")
 	private Conta contaDestino;
 	
-	@CreationTimestamp //Seta automaticamente a data ao instanciar o objeto
+	/*
+	 * Setada automaticamente ao instanciar o objeto
+	 */
+	@CreationTimestamp 
 	@Column(name = "dt_criacao_transacao", nullable = false)
 	private Date dtCadastroTransacao;
 

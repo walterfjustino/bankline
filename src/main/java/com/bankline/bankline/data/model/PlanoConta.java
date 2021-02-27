@@ -22,6 +22,12 @@ import com.bankline.bankline.data.enums.TipoPlanoContaEnum;
 @Table(name = "plano_conta")
 public class PlanoConta {
 	
+	public PlanoConta() {
+		
+		isAtivoPlanoConta = true;
+		
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id_plano_conta")
@@ -43,6 +49,10 @@ public class PlanoConta {
 	
 	@OneToMany(mappedBy = "planoContaTransacao", fetch = FetchType.LAZY)
 	public List<Transacao> transacoesPlanoConta;
+	
+	@Column(name = "is_padrao", nullable = false)
+	private Boolean isPadrao;
+	
 
 	public Long getIdPlanoConta() {
 		return idPlanoConta;
@@ -91,6 +101,13 @@ public class PlanoConta {
 	public void setTransacoesPlanoConta(List<Transacao> transacoesPlanoConta) {
 		this.transacoesPlanoConta = transacoesPlanoConta;
 	}
-	
+
+	public Boolean getIsPadrao() {
+		return isPadrao;
+	}
+
+	public void setIsPadrao(Boolean isPadrao) {
+		this.isPadrao = isPadrao;
+	}
 
 }
