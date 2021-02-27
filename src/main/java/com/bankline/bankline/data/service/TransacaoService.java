@@ -27,12 +27,13 @@ public class TransacaoService {
 	@Autowired
 	private PlanoContaRepository planoContaRepository;
 	
-	public Transacao salvar(TransacaoDTO dto) throws LoginNaoPertenceAContaException, TransFerenciaSemDestinoException, SaldoInsulficienteException {
+	public Transacao salvar(TransacaoDTO dto) throws LoginNaoPertenceAContaException, 
+													 TransFerenciaSemDestinoException,
+													 SaldoInsulficienteException {
 		
 		Conta origem = contaRepository.findById(dto.getContaOrigemTransacao()).get();
 		PlanoConta planoConta = planoContaRepository.findById(dto.getPlanoConta()).get();
 
-		
 		if(!origem.getDono().getLoginUsuario().equals(dto.getLogin())) throw new LoginNaoPertenceAContaException();
 		
 		if(planoConta.getTpPlanoConta().equals(TipoPlanoContaEnum.TRANSFERENCIA) && dto.getContaDestino().equals(null)) throw new TransFerenciaSemDestinoException();
@@ -41,7 +42,6 @@ public class TransacaoService {
 		
 		return repository.save(montarTransacao(dto, origem, planoConta));
 	
-		
 	}
 
 	private Transacao montarTransacao(TransacaoDTO dto, Conta origem, PlanoConta planoConta) {
