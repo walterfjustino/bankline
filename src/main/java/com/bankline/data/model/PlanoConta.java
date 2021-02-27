@@ -1,59 +1,96 @@
 package com.bankline.data.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.Date;
+
+import com.bankline.data.model.enums.TipoPlanoContaEnum;
 
 @Entity
-@Table(name = "clientes")
-
+@Table(name = "plano_conta")
 public class PlanoConta {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id_plano_conta")
 	private int idPlanoConta;
-	private String nmPlanoConta;
-	private String tpPlanoConta;
-	private String DescriçaoPlanoConta;
-	private boolean isAtivoPlanoConta;
-	private int idUsuarioCriador;
 	
+	@Column(name = "descricao_plano_conta", nullable = false, length = 15)
+	private String descPlanoConta;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "tp_plano_conta", nullable = false)
+	private TipoPlanoContaEnum tpPlanoConta;
+	
+	@Column(name = "is_ativo", nullable = false)
+	private Boolean isAtivoPlanoConta;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_usuario_criador")
+	private Usuario usuarioCriador;
+	
+	@OneToMany(mappedBy = "planoContaTransacao", fetch = FetchType.LAZY)
+	public List<Transacao> transacoesPlanoConta;
+
 	public int getIdPlanoConta() {
 		return idPlanoConta;
 	}
+
 	public void setIdPlanoConta(int idPlanoConta) {
 		this.idPlanoConta = idPlanoConta;
 	}
-	public String getNmPlanoConta() {
-		return nmPlanoConta;
+
+	public String getDescPlanoConta() {
+		return descPlanoConta;
 	}
-	public void setNmPlanoConta(String nmPlanoConta) {
-		this.nmPlanoConta = nmPlanoConta;
+
+	public void setDescPlanoConta(String descPlanoConta) {
+		this.descPlanoConta = descPlanoConta;
 	}
-	public String getTpPlanoConta() {
+
+	public TipoPlanoContaEnum getTpPlanoConta() {
 		return tpPlanoConta;
 	}
-	public void setTpPlanoConta(String tpPlanoConta) {
+
+	public void setTpPlanoConta(TipoPlanoContaEnum tpPlanoConta) {
 		this.tpPlanoConta = tpPlanoConta;
 	}
-	public String getDescriçaoPlanoConta() {
-		return DescriçaoPlanoConta;
-	}
-	public void setDescriçaoPlanoConta(String descriçaoPlanoConta) {
-		DescriçaoPlanoConta = descriçaoPlanoConta;
-	}
-	public boolean isAtivoPlanoConta() {
+
+	public Boolean getIsAtivoPlanoConta() {
 		return isAtivoPlanoConta;
 	}
-	public void setAtivoPlanoConta(boolean isAtivoPlanoConta) {
+
+	public void setIsAtivoPlanoConta(Boolean isAtivoPlanoConta) {
 		this.isAtivoPlanoConta = isAtivoPlanoConta;
 	}
-	public int getIdUsuarioCriador() {
-		return idUsuarioCriador;
+
+	public Usuario getUsuarioCriador() {
+		return usuarioCriador;
 	}
-	public void setIdUsuarioCriador(int idUsuarioCriador) {
-		this.idUsuarioCriador = idUsuarioCriador;
+
+	public void setUsuarioCriador(Usuario usuarioCriador) {
+		this.usuarioCriador = usuarioCriador;
 	}
+
+	public List<Transacao> getTransacoesPlanoConta() {
+		return transacoesPlanoConta;
+	}
+
+	public void setTransacoesPlanoConta(List<Transacao> transacoesPlanoConta) {
+		this.transacoesPlanoConta = transacoesPlanoConta;
+	}
+	
 
 }
