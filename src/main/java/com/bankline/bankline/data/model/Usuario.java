@@ -1,4 +1,4 @@
-package com.bankline.data.model;
+package com.bankline.bankline.data.model;
 
 import java.time.LocalDateTime;
 
@@ -29,7 +29,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id_usuario")
-	private int idUsuario;
+	private Long idUsuario;
 	
 	@Column(name = "usuario_nome", nullable = false)
 	private String nomeUsuario;
@@ -58,11 +58,11 @@ public class Usuario {
 	@OneToOne(mappedBy = "dono")
 	private Conta contaUsuario;
 
-	public int getIdUsuario() {
+	public Long getIdUsuario() {
 		return idUsuario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 

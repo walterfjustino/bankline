@@ -1,4 +1,4 @@
-package com.bankline.data.model;
+package com.bankline.bankline.data.model;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.bankline.data.model.enums.TipoPlanoContaEnum;
+import com.bankline.bankline.data.enums.TipoPlanoContaEnum;
 
 @Entity
 @Table(name = "plano_conta")
@@ -25,7 +25,7 @@ public class PlanoConta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id_plano_conta")
-	private int idPlanoConta;
+	private Long idPlanoConta;
 	
 	@Column(name = "descricao_plano_conta", nullable = false, length = 15)
 	private String descPlanoConta;
@@ -44,11 +44,11 @@ public class PlanoConta {
 	@OneToMany(mappedBy = "planoContaTransacao", fetch = FetchType.LAZY)
 	public List<Transacao> transacoesPlanoConta;
 
-	public int getIdPlanoConta() {
+	public Long getIdPlanoConta() {
 		return idPlanoConta;
 	}
 
-	public void setIdPlanoConta(int idPlanoConta) {
+	public void setIdPlanoConta(Long idPlanoConta) {
 		this.idPlanoConta = idPlanoConta;
 	}
 

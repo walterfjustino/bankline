@@ -1,4 +1,4 @@
-package com.bankline.data.model;
+package com.bankline.bankline.data.model;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class Conta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id_conta")
-	private int idConta;
+	private Long idConta;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "conta_dono")
@@ -66,11 +66,11 @@ public class Conta {
 		this.transacoes = transacoes;
 	}
 
-	public int getIdConta() {
+	public Long getIdConta() {
 		return idConta;
 	}
 
-	public void setIdConta(int idConta) {
+	public void setIdConta(Long idConta) {
 		this.idConta = idConta;
 	}
 	

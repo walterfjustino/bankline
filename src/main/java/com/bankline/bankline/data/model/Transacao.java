@@ -1,6 +1,5 @@
-package com.bankline.data.model;
+package com.bankline.bankline.data.model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -21,7 +20,7 @@ public class Transacao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int idTransacao;
+	private Long idTransacao;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_conta_origem_transacao")
@@ -32,7 +31,7 @@ public class Transacao {
 	private PlanoConta planoContaTransacao;
 	
 	@Column(name = "dt_lancamento_transacao", nullable = false)
-	private LocalDateTime dtLancamentoTransacao;
+	private Date dtLancamentoTransacao;
 	
 	@Column(name = "valor_transacao", nullable = false)
 	private Double valorTransacao;
@@ -48,11 +47,11 @@ public class Transacao {
 	@Column(name = "dt_criacao_transacao", nullable = false)
 	private Date dtCadastroTransacao;
 
-	public int getIdTransacao() {
+	public Long getIdTransacao() {
 		return idTransacao;
 	}
 
-	public void setIdTransacao(int idTransacao) {
+	public void setIdTransacao(Long idTransacao) {
 		this.idTransacao = idTransacao;
 	}
 
@@ -72,11 +71,11 @@ public class Transacao {
 		this.planoContaTransacao = planoContaTransacao;
 	}
 
-	public LocalDateTime getDtLancamentoTransacao() {
+	public Date getDtLancamentoTransacao() {
 		return dtLancamentoTransacao;
 	}
 
-	public void setDtLancamentoTransacao(LocalDateTime dtLancamentoTransacao) {
+	public void setDtLancamentoTransacao(Date dtLancamentoTransacao) {
 		this.dtLancamentoTransacao = dtLancamentoTransacao;
 	}
 
