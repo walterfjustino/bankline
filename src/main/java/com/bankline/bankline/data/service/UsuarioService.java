@@ -12,12 +12,12 @@ import com.bankline.bankline.data.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 	
-	
+	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	@Autowired
 	private final UsuarioMapper usuarioMapper = UsuarioMapper.INSTANCE;
 	
-	@Autowired
 	public UsuarioService(UsuarioRepository usuarioRepository) {
 		this.usuarioRepository = usuarioRepository;
 	}
@@ -29,8 +29,7 @@ public class UsuarioService {
 		
 		Usuario usuarioSalvo = usuarioRepository.save(usuarioToSalvar);
 		return MessageResponseDTO.builder().message("Usuário cadastrado ID: " + usuarioSalvo.getIdUsuario()).build();
-		
-		
+			
 	}
 
 }
