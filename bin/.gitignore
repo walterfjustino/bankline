@@ -13,6 +13,15 @@ target/
 .springBeans
 .sts4-cache
 
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -31,6 +40,7 @@ build/
 
 ### VS Code ###
 .vscode/
-/mvnw
-/mvnw.cmd
-/pom.xml
+
+
+/bin/
+/.externalToolBuilders/

@@ -22,6 +22,10 @@ public class UsuarioService {
 		this.usuarioRepository = usuarioRepository;
 	}
 	
+	//metodo POST
+	
+	
+	
 	//Metodo Post - cadastrar usuario
 	public MessageResponseDTO cadastrar(UsuarioDTO usuarioDTO) {
 		
