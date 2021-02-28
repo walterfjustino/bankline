@@ -39,7 +39,7 @@ public class Conta {
 	@Column(name = "conta_saldo", nullable = false)
 	private Double saldo;
 	
-	@OneToMany(mappedBy = "contaTransacao", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "contaOrigemTransacao", fetch = FetchType.LAZY)
 	private List<Transacao> transacoes;
 	
 	public Usuario getDono() {
