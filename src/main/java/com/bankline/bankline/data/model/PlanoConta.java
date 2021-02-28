@@ -18,15 +18,25 @@ import javax.persistence.Table;
 
 import com.bankline.bankline.data.enums.TipoPlanoContaEnum;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 @Entity
 @Table(name = "plano_conta")
 public class PlanoConta {
 	
-	public PlanoConta() {
+/*	public PlanoConta() {
 		
 		isAtivoPlanoConta = true;
 		
-	}
+	}*/
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -53,7 +63,7 @@ public class PlanoConta {
 	@Column(name = "is_padrao", nullable = false)
 	private Boolean isPadrao;
 	
-
+/*
 	public Long getIdPlanoConta() {
 		return idPlanoConta;
 	}
@@ -108,6 +118,6 @@ public class PlanoConta {
 
 	public void setIsPadrao(Boolean isPadrao) {
 		this.isPadrao = isPadrao;
-	}
+	}*/
 
 }
