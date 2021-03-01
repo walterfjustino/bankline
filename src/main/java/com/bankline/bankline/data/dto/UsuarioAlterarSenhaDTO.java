@@ -16,10 +16,10 @@ public class UsuarioAlterarSenhaDTO {
 
 	
 	private Long idUsuario;
-	@NotBlank
+	@NotBlank(message = "Login e obrigatorio")
 	@Size(min = 8,max = 20, message = "Login deve conter Minimo 5 Maximo 20 caracteres")
 	private String loginUsuario;
-	@NotBlank
+	@NotBlank(message = "Senha nao pode ser em branco")
 	private String senhaUsuario;
 
 }

@@ -10,6 +10,7 @@ import com.bankline.bankline.data.model.Conta;
 public interface ContaRepository extends JpaRepository<Conta, Long> {
 	
 	@Query("SELECT c FROM Conta c WHERE c.dono.loginUsuario = :login")
+	
 	Conta findbyDonoLogin(String login);
 
 }

@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UsuarioNovaSenhaDTO {
 
-	private Long idUsuario;
+	private Long idUsuario; 
 	private boolean isAtivoUsuario;
-	@NotBlank
+	@NotBlank(message = "Login e obrigatorio")
 	@Size(min = 8,max = 20, message = "Login deve conter Minimo 5 Maximo 20 caracteres")
 	private String loginUsuario;
-	@NotBlank
+	@NotBlank(message = "Nova Senha nao pode ser em branco")
 	private String senhaUsuarioTemp;
 
 }
