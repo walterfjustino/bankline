@@ -2,6 +2,7 @@ package com.bankline.bankline.data.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,23 +26,17 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id_usuario")
 	private Long id;
 
-	@Column(name = "usuario_nome", nullable = false)
 	private String nome;
 
-	@Column(name = "usuario_cpf", nullable = false, unique = true)
 	private String cpf;
 
-	@Column(name = "usuario_login", nullable = false, unique = true, length = 20)
 	private String login;
 
-	@Column(name = "usuario_senha", nullable = false)
 	private String senha;
 
-	@Column(name = "usuario_senha_temp", nullable = false)
-	private String senhaUsuarioTemp;
+	private String senhaTemp;
 
 	@Column(name = "is_redefinir_senha")
 	private Boolean isRedefinirSenha;
@@ -49,10 +44,10 @@ public class Usuario {
 	@Column(name = "dt_ultimo_login")
 	private LocalDateTime dataUltimoLogin;
 
-	@Column(name = "is_usuario_ativo", nullable = false)
+	@Column(name = "is_usuario_ativo")
 	private Boolean isAtivo;
 
-	@OneToOne(mappedBy = "dono")
+	@OneToOne(mappedBy = "dono", cascade = CascadeType.PERSIST)
 	private Conta conta;
 
 }

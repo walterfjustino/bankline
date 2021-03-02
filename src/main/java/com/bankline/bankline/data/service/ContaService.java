@@ -9,11 +9,15 @@ import com.bankline.bankline.data.model.Usuario;
 public class ContaService {
 	
 	public Conta criar(Usuario usuario) {
-		return Conta.builder()
+		Conta conta =  Conta.builder()
 				.dono(usuario)
 				.saldo(0.00)
 				.transacoes(null)
 				.build();
+		
+		usuario.setConta(conta);
+		
+		return conta;
 	}
 
 }

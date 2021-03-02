@@ -71,10 +71,12 @@ public class UsuarioService {
 	public Usuario fromCreateDto(UsuarioDTO usuarioDTO) {
 
 		Usuario usuario = Usuario.builder().nome(usuarioDTO.getNome()).cpf(usuarioDTO.getCpf())
-				.login(usuarioDTO.getLogin()).senha(usuarioDTO.getSenha()).senhaUsuarioTemp(null)
+				.login(usuarioDTO.getLogin()).senha(usuarioDTO.getSenha()).senhaTemp(null)
 				.isRedefinirSenha(false).dataUltimoLogin(null).build();
 
 		contaService.criar(usuario);
+		
+		System.out.println(usuario);
 
 		return usuario;
 

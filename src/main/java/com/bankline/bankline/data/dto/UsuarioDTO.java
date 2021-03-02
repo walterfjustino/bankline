@@ -1,34 +1,32 @@
 package com.bankline.bankline.data.dto;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class UsuarioDTO {
 
 	@NotBlank
-	@Size(min = 5, max = 200, message = "Preencher o Nome completo")
+	@Size(min = 3, max = 200, message = "Preencher o Nome completo")
 	private String nome;
 
-	@NotBlank
-	@Max(value = 11)
-	@Min(value = 11)
+	@CPF
 	private String cpf;
 
-	@NotBlank
 	@Size(min = 8, max = 20, message = "Login deve conter Minimo 5 Maximo 20 caracteres")
 	private String login;
-
+	
 	@NotBlank
 	private String senha;
 
