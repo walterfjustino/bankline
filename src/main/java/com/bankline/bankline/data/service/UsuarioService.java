@@ -5,20 +5,18 @@ import org.springframework.stereotype.Service;
 
 import com.bankline.bankline.data.dto.UsuarioDTO;
 import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
+import com.bankline.bankline.data.model.Conta;
 import com.bankline.bankline.data.model.Usuario;
 import com.bankline.bankline.data.repository.UsuarioRepository;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 @Service
 public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	@Autowired
-	private final ContaService contaService;
+//	@Autowired
+//	private ContaService contaService;
 
 //	@Autowired
 //	private final UsuarioMapper usuarioMapper = UsuarioMapper.INSTANCE;
@@ -85,16 +83,34 @@ public class UsuarioService {
 
 	public Usuario fromCreateDto(UsuarioDTO usuarioDTO) {
 
-		Usuario usuario = Usuario.builder().nome(usuarioDTO.getNome()).cpf(usuarioDTO.getCpf())
-				.login(usuarioDTO.getLogin()).senha(usuarioDTO.getSenha()).senhaTemp(null)
-				.isRedefinirSenha(false).dataUltimoLogin(null).build();
+		Usuario usuario = Usuario.builder()
+					.nome(usuarioDTO.getNome())
+					.cpf(usuarioDTO.getCpf())
+					.login(usuarioDTO.getLogin())
+					.senha(usuarioDTO.getSenha())
+					.senhaTemp(null)
+					.conta(Conta.builder().saldo(0.0).build())
+					.isRedefinirSenha(false)
+					.dataUltimoLogin(null)
+					.build();
 
-		contaService.criar(usuario);
-		
-		System.out.println(usuario);
+		//contaService.criar(usuario);
 
 		return usuario;
 
+	}
+	
+	public UsuarioDTO fromCreateModel(Usuario model, boolean precisaSenha) {
+		
+		UsuarioDTO dto = UsuarioDTO.builder()
+				.cpf(model.getCpf())
+				.login(model.getLogin())
+				.nome(model.getNome())
+				.senha(precisaSenha ? model.getSenha() : null)
+				.build();
+		
+		return dto;
+		
 	}
 
 }

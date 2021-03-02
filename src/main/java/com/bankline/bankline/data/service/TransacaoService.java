@@ -1,5 +1,9 @@
 package com.bankline.bankline.data.service;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,11 +44,26 @@ public class TransacaoService {
 		
 		if(!planoConta.getTpPlanoConta().equals(TipoPlanoContaEnum.RECEITA) && origem.getSaldo() - dto.getValor() < 0) throw new SaldoInsulficienteException();
 		
-		return repository.save(montarTransacao(dto, origem, planoConta));
+		return repository.save(createFromDto(dto, origem, planoConta));
 	
 	}
 
-	private Transacao montarTransacao(TransacaoDTO dto, Conta origem, PlanoConta planoConta) {
+	public List<TransacaoDTO> buscarPorIntervalo(Conta origem, Date dtInicial, Date dtFinal) {
+		
+		List<Transacao> consulta = repository.findByContaOrigemTransacaoAndDtLancamentoTransacao(origem, dtInicial, dtFinal);
+		List<TransacaoDTO> dtos = new ArrayList<TransacaoDTO>();
+		
+		for(Transacao transacao : consulta) {
+			
+			dtos.add(createFromModel(transacao));
+			
+		}
+		
+		return dtos;
+		
+	}
+
+	private Transacao createFromDto(TransacaoDTO dto, Conta origem, PlanoConta planoConta) {
 		
 		Transacao transacao = new Transacao();
 		
@@ -90,4 +109,21 @@ public class TransacaoService {
 		
 	}
 
+	private TransacaoDTO createFromModel(Transacao model) {
+		
+		TransacaoDTO dto = TransacaoDTO.builder()
+				.contaDestino(model.getContaDestino().getDono().getLogin())
+				.contaOrigemTransacao(model.getContaOrigemTransacao().getId())
+				.descricao(model.getDescricaoTransacao())
+				.dtLancamentoTransacao(model.getDtLancamentoTransacao())
+				.login(model.getContaOrigemTransacao().getDono().getLogin())
+				.planoConta(model.getPlanoContaTransacao().getIdPlanoConta())
+				.valor(model.getValorTransacao())
+				.build();
+		
+		return dto;
+				
+		
+	}
+	
 }

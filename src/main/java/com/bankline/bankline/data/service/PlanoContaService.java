@@ -58,13 +58,13 @@ public class PlanoContaService {
 	
 	public PlanoContaDTO salvarPlanoConta(PlanoContaDTO dto) throws UsuarioNaoEncontradoException {
 		
-		PlanoConta pc = fromCreateModel(dto);
+		PlanoConta pc = fromCreateDto(dto);
 		
 		return fromCreateDTO(planoContaRepository.save(pc));
 		
 	}
 	
-	private PlanoConta fromCreateModel(PlanoContaDTO dto) throws UsuarioNaoEncontradoException {
+	private PlanoConta fromCreateDto(PlanoContaDTO dto) throws UsuarioNaoEncontradoException {
 		
 		PlanoConta pc = PlanoConta.builder()
 								.descPlanoConta(dto.getDescPlanoConta())

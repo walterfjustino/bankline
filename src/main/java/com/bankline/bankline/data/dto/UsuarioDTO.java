@@ -1,20 +1,15 @@
 package com.bankline.bankline.data.dto;
 
 import javax.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.br.CPF;
 import javax.validation.constraints.Size;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+import lombok.Builder;
+import lombok.Getter;
+
 @Getter
-@Setter
+@Builder
 public class UsuarioDTO {
 
 	@NotBlank
