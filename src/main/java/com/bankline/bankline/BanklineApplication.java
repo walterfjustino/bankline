@@ -26,7 +26,7 @@ public class BanklineApplication {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
 				.paths(PathSelectors.ant("/api/*"))
-				.apis(RequestHandlerSelectors.basePackage("com.example.demo.swagger"))
+				.apis(RequestHandlerSelectors.basePackage("com.bankline.bankline.data.controller"))
 				.build()
 				.apiInfo(apiDetails());
 	}

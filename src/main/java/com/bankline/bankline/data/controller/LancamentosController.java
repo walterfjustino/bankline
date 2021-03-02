@@ -15,7 +15,7 @@ import com.bankline.bankline.data.model.Transacao;
 import com.bankline.bankline.data.service.TransacaoService;
 
 @RestController
-@RequestMapping(value = "lancamentos")
+@RequestMapping(value = "/api/lancamentos")
 public class LancamentosController {
 	
 	

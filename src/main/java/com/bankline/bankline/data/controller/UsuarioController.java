@@ -15,7 +15,7 @@ import com.bankline.bankline.data.model.Usuario;
 import com.bankline.bankline.data.service.UsuarioService;
 
 @RestController
-@RequestMapping(value = "/usuarios")
+@RequestMapping(value = "/api/usuarios")
 public class UsuarioController {
 
 	@Autowired
