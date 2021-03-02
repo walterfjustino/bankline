@@ -1,12 +1,14 @@
 package com.bankline.bankline.data.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bankline.bankline.data.dto.MessageResponseDTO;
 import com.bankline.bankline.data.dto.UsuarioDTO;
+import com.bankline.bankline.data.model.Usuario;
 import com.bankline.bankline.data.service.UsuarioService;
 
 @RestController
@@ -18,10 +20,10 @@ public class UsuarioController {
 	
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public MessageResponseDTO newUser(UsuarioDTO usuario) {
+	public ResponseEntity<Usuario> newUser(UsuarioDTO usuarioDto) {
 		
-		MessageResponseDTO novoUsuario = usuarioService.cadastrar(usuario);
-		return novoUsuario;
+		Usuario usuario = usuarioService.cadastrar(usuarioDto);
+		return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
 		
 	}
 	
