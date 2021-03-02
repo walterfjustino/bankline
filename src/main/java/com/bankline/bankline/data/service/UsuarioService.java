@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bankline.bankline.data.dto.UsuarioDTO;
+import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
 import com.bankline.bankline.data.model.Usuario;
 import com.bankline.bankline.data.repository.UsuarioRepository;
 
@@ -25,6 +26,20 @@ public class UsuarioService {
 	public Usuario cadastrar(UsuarioDTO usuarioDTO) {
 		Usuario usuario = fromCreateDto(usuarioDTO);
 		return this.usuarioRepository.save(usuario);
+	}
+	
+	public Usuario buscar(String login) throws UsuarioNaoEncontradoException {
+		
+		try {
+			
+			return usuarioRepository.findByLogin(login);
+			
+		} catch (NullPointerException e) {
+			
+			throw new UsuarioNaoEncontradoException();
+			
+		}
+		
 	}
 
 	/*
