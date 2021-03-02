@@ -6,8 +6,6 @@ import org.mapstruct.factory.Mappers;
 import com.bankline.bankline.data.dto.PlanoContaDTO;
 import com.bankline.bankline.data.model.PlanoConta;
 
-
-
 @Mapper
 public interface PlanoContaMapper {
 	

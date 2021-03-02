@@ -30,6 +30,9 @@ public class PlanoContaDTO {
 	@NotBlank
 	private Boolean isPadrao;
 	
+	@NotBlank
+	private String login;
+	
 	
 	public List<Transacao> transacoesPlanoConta;
 	

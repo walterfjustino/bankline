@@ -10,6 +10,6 @@ import com.bankline.bankline.data.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	
-	List<Usuario> findByLogin(String login);
+	Usuario findByLogin(String login);
 
 }
