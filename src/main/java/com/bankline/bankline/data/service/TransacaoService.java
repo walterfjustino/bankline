@@ -34,7 +34,7 @@ public class TransacaoService {
 		Conta origem = contaRepository.findById(dto.getContaOrigemTransacao()).get();
 		PlanoConta planoConta = planoContaRepository.findById(dto.getPlanoConta()).get();
 
-		if(!origem.getDono().getLoginUsuario().equals(dto.getLogin())) throw new LoginNaoPertenceAContaException();
+		if(!origem.getDono().getLogin().equals(dto.getLogin())) throw new LoginNaoPertenceAContaException();
 		
 		if(planoConta.getTpPlanoConta().equals(TipoPlanoContaEnum.TRANSFERENCIA) && dto.getContaDestino().equals(null)) throw new TransFerenciaSemDestinoException();
 		

@@ -14,23 +14,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name = "contas")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Conta {
-	
-	/*
-	 * Ao instanciar a conta, não é necessário setar o saldo inicial.
-	 */
-	public Conta() {
-		
-		this.saldo = 0.00;
-		
-	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id_conta")
-	private Long idConta;
+	private Long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "conta_dono")
@@ -41,39 +42,5 @@ public class Conta {
 	
 	@OneToMany(mappedBy = "contaOrigemTransacao", fetch = FetchType.LAZY)
 	private List<Transacao> transacoes;
-	
-	public Usuario getDono() {
-		return dono;
-	}
-	
-	public void setDono(Usuario dono) {
-		this.dono = dono;
-	}
-	
-	public Double getSaldo() {
-		return saldo;
-	}
-	
-	public void setSaldo(Double saldo) {
-		this.saldo = saldo;
-	}
-
-	public List<Transacao> getTransacoes() {
-		return transacoes;
-	}
-
-	public void setTransacoes(List<Transacao> transacoes) {
-		this.transacoes = transacoes;
-	}
-
-	public Long getIdConta() {
-		return idConta;
-	}
-
-	public void setIdConta(Long idConta) {
-		this.idConta = idConta;
-	}
-	
-	
 		
 }
