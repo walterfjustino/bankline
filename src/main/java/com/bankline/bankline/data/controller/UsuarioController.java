@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.bankline.bankline.data.dto.UsuarioDTO;
+import com.bankline.bankline.data.model.Conta;
 import com.bankline.bankline.data.model.Usuario;
+import com.bankline.bankline.data.service.ContaService;
 import com.bankline.bankline.data.service.UsuarioService;
 
 @RestController
@@ -20,11 +22,13 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private ContaService contaService;
 
 	@PostMapping
 	public ResponseEntity<Usuario> newUser(@RequestBody UsuarioDTO usuarioDto) {
 		Usuario savedUsuario = this.usuarioService.cadastrar(usuarioDto);
-
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUsuario.getId())
 				.toUri();
 

@@ -3,8 +3,8 @@ package com.bankline.bankline.data.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bankline.bankline.data.dto.TransacaoDTO;
@@ -23,22 +23,20 @@ public class LancamentosController {
 	private TransacaoService transacaoService;
 	
 	/** "?" curinga, o tipo de responsta ddo controlador aceitará ambos. **/
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public ResponseEntity<?> newTransaction(TransacaoDTO lancamento){
-		
 		try {
-			
 			Transacao transacao = transacaoService.salvar(lancamento);
 			return ResponseEntity.ok().body(transacao);
 		}
 		catch (LoginNaoPertenceAContaException log) {
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(log);
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(log.getMessage());
 		}
 		catch (TransFerenciaSemDestinoException log) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(log);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(log.getMessage());
 		}
 		catch (SaldoInsulficienteException log) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(log);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(log.getMessage());
 		}
 
 	}
