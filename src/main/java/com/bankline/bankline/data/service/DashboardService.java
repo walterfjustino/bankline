@@ -21,19 +21,21 @@ public class DashboardService {
 	@Autowired
 	private TransacaoService transacaoService;
 	
-	public DashboardDTO montar(Date dtInicial, Date dtFinal, String login) throws UsuarioNaoEncontradoException {
-		
-		Usuario usuario = usuarioService.buscar(login);
-		UsuarioDTO usuarioDto = usuarioService.fromCreateModel(usuario, false);
-		List<TransacaoDTO> transacoesDto = transacaoService.buscarPorIntervalo(usuario.getConta(), dtInicial, dtFinal);
-		
-		DashboardDTO dto = DashboardDTO.builder()
-				.usuario(usuarioDto)
-				.transacoes(transacoesDto)
-				.build();
-		
-		return dto;
-		
-	}
+	// ******************************  Necessário Verificar ***************************************************
+	
+//	public DashboardDTO montar(Date dtInicial, Date dtFinal, String login) throws UsuarioNaoEncontradoException {
+//		
+//		Usuario usuario = usuarioService.buscar(login);
+//		UsuarioDTO usuarioDto = usuarioService.fromCreateModel(usuario, false);
+//		List<TransacaoDTO> transacoesDto = transacaoService.buscarPorIntervalo(usuario.getConta(), dtInicial, dtFinal);
+//		
+//		DashboardDTO dto = DashboardDTO.builder()
+//				.usuario(usuarioDto)
+//				.transacoes(transacoesDto)
+//				.build();
+//		
+//		return dto;
+//		
+//	}
 
 }

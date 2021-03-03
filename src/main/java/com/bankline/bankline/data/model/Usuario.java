@@ -8,8 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,11 +35,9 @@ public class Usuario {
 
 	private String cpf;
 
-	private String login;
-
-	private String senha;
-
 	private String senhaTemp;
+	
+	private String login;
 
 	@Column(name = "is_redefinir_senha")
 	private Boolean isRedefinirSenha;
@@ -47,7 +48,12 @@ public class Usuario {
 	@Column(name = "is_usuario_ativo")
 	private Boolean isAtivo;
 
-	@OneToOne(mappedBy = "dono", cascade = CascadeType.PERSIST)
+	@OneToOne(mappedBy = "dono", cascade = CascadeType.ALL)
 	private Conta conta;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "usuario_id", nullable = false)
+	@JsonIgnore
+	private UsuarioLogin usuarioLogin;
 
 }
