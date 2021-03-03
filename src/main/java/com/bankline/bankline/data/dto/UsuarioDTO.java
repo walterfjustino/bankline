@@ -3,6 +3,10 @@ package com.bankline.bankline.data.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 //import org.hibernate.validator.constraints.br.CPF;
 
 import lombok.Builder;
@@ -10,6 +14,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
+@JsonInclude(Include.NON_NULL)
 public class UsuarioDTO {
 
 	@NotBlank

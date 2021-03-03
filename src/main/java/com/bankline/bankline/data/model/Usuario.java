@@ -34,8 +34,6 @@ public class Usuario {
 	private String nome;
 
 	private String cpf;
-
-	private String senhaTemp;
 	
 	private String login;
 
