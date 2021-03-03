@@ -39,38 +39,36 @@ public class UsuarioService {
 		}
 		
 	}
-
-	/*
-	 * //Metodo Post - Alterar a senha do usuario public MessageResponseDTO
-	 * alterarSenha(UsuarioDTO usuarioDTO) {
-	 * 
-	 * String senhaAlterada = usuarioMapper.toModel(usuarioDTO).getSenhaUsuario();
-	 * 
-	 * Usuario usuarioAlterandoSenha =
-	 * usuarioMapper.toModel(usuarioDTO).setSenhaUsuario(senhaAlterada);
-	 * 
-	 * Usuario usuarioSelecionado = usuarioRepository.save(usuarioAlterandoSenha);
-	 * 
-	 * if(usuarioDTO.getIsAtivoUsuario()) { return
-	 * MessageResponseDTO.builder().message("Senha Alterada ID: " +
-	 * usuarioSelecionado.getIdUsuario()).build(); } } //Metodo Post - Pedir nova
-	 * senha para o usuario public MessageResponseDTO novaSenha(UsuarioDTO
-	 * usuarioDTO) {
-	 * 
-	 * String senhaTemporariaCadastrada =
-	 * usuarioMapper.toModel(usuarioDTO).getSenhaUsuarioTemp();
-	 * 
-	 * Usuario usuarioCadastrandoNovaSenha =
-	 * usuarioMapper.toModel(usuarioDTO).setSenhaUsuarioTemp(
-	 * senhaTemporariaCadastrada);;
-	 * 
-	 * Usuario usuarioSelecionado =
-	 * usuarioRepository.save(usuarioCadastrandoNovaSenha);
-	 * if(usuarioDTO.getIsAtivoUsuario()) { return
-	 * MessageResponseDTO.builder().message("Nova Senha Alterada ID: " +
-	 * usuarioSelecionado.getIdUsuario()).build(); } }
-	 */
-
+	
+	// alterar senha 
+	public Usuario alterarSenha(String login, String senha) throws UsuarioNaoEncontradoException {
+		try {
+			
+			Usuario usuario = usuarioRepository.findByLogin(login);
+			usuario.setSenha(senha);
+			return this.usuarioRepository.save(usuario);
+					
+		} catch (Exception e) {
+			
+			throw new UsuarioNaoEncontradoException();
+		}
+	}
+	
+	// nova senha
+	public Usuario solicitarNovaSenha(String login, String senhaTemp) throws UsuarioNaoEncontradoException {
+		try {
+			
+			Usuario usuario = usuarioRepository.findByLogin(login);
+			usuario.setSenhaTemp(senhaTemp);
+			usuario.setIsRedefinirSenha(true);
+			return this.usuarioRepository.save(usuario);
+					
+		} catch (Exception e) {
+			
+			throw new UsuarioNaoEncontradoException();
+		}
+	}
+	
 	// Metodo Post - cadastrar usuario
 //	public MessageResponseDTO cadastrar(UsuarioDTO usuarioDTO) {
 //		
