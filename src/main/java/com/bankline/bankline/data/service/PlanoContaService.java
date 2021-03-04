@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bankline.bankline.data.dto.PlanoContaDTO;
+import com.bankline.bankline.data.dto.PlanoContaFormDTO;
 import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
 import com.bankline.bankline.data.model.PlanoConta;
 import com.bankline.bankline.data.repository.PlanoContaRepository;
@@ -56,23 +57,23 @@ public class PlanoContaService {
 		
 	}
 	
-	public PlanoContaDTO salvarPlanoConta(PlanoContaDTO dto) throws UsuarioNaoEncontradoException {
+	public PlanoContaDTO salvarPlanoConta(PlanoContaFormDTO planoConta) throws UsuarioNaoEncontradoException {
 		
-		PlanoConta pc = fromCreateDto(dto);
+		PlanoConta pc = fromCreateDto(planoConta);
 		
 		return fromCreateDTO(planoContaRepository.save(pc));
 		
 	}
 	
-	private PlanoConta fromCreateDto(PlanoContaDTO dto) throws UsuarioNaoEncontradoException {
+	private PlanoConta fromCreateDto(PlanoContaFormDTO planoConta) throws UsuarioNaoEncontradoException {
 		
 		PlanoConta pc = PlanoConta.builder()
-								.descPlanoConta(dto.getDescPlanoConta())
-								.isAtivoPlanoConta(dto.getIsAtivoPlanoConta())
-								.isPadrao(dto.getIsAtivoPlanoConta())
-								.tpPlanoConta(dto.getTpPlanoConta())
-								.usuarioCriador(usuarioService.buscar(dto.getLogin()))
-								.idPlanoConta(dto.getIdPlanoConta() == null ? null : dto.getIdPlanoConta())
+								.descPlanoConta(planoConta.getDescricao())
+								.isAtivoPlanoConta(planoConta.isAtivo())
+								.isPadrao(planoConta.isPadrao())
+								.tpPlanoConta(planoConta.getTipo())
+								.usuarioCriador(usuarioService.buscar(planoConta.getLogin()))
+								.idPlanoConta(planoConta.getId() == null ? null : planoConta.getId())
 								.build();
 		
 		return pc;
@@ -103,7 +104,6 @@ public class PlanoContaService {
 							   .descPlanoConta(plano.getDescPlanoConta())
 							   .tpPlanoConta(plano.getTpPlanoConta())
 							   .login(plano.getUsuarioCriador().getLogin())
-							   .transacoesPlanoConta(plano.getTransacoesPlanoConta())
 							   .build();
 		
 		return dto;
