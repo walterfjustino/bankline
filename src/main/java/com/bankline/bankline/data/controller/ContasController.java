@@ -18,7 +18,7 @@ import com.bankline.bankline.data.repository.PlanoContaRepository;
 import com.bankline.bankline.data.service.PlanoContaService;
 
 @RestController
-@RequestMapping(value = "api/contas")
+@RequestMapping(value = "/api")
 public class ContasController {
 	
 	@Autowired
@@ -44,6 +44,5 @@ public class ContasController {
 		List<PlanoConta> listaPlanos = planoContaRepository.findPlanoContaDisponiveis(usuario);
 		return ResponseEntity.status(HttpStatus.OK).body(listaPlanos);
 	}
-	
 
 }
