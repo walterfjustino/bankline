@@ -2,7 +2,6 @@ package com.bankline.bankline.data.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,8 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.bankline.bankline.data.enums.TipoPlanoContaEnum;
@@ -43,7 +42,7 @@ public class PlanoConta {
 	@Column(name = "id_plano_conta")
 	private Long idPlanoConta;
 	
-	@Column(name = "descricao_plano_conta", nullable = false, length = 15)
+	@Column(name = "descricao_plano_conta", nullable = false, length = 30)
 	private String descPlanoConta;
 	
 	@Enumerated(EnumType.STRING)
@@ -53,7 +52,7 @@ public class PlanoConta {
 	@Column(name = "is_ativo", nullable = false)
 	private Boolean isAtivoPlanoConta;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "id_usuario_criador")
 	private Usuario usuarioCriador;
 	

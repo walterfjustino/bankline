@@ -5,11 +5,13 @@ import javax.validation.constraints.NotBlank;
 
 import com.bankline.bankline.data.enums.TipoPlanoContaEnum;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Builder
 @Data
+@AllArgsConstructor
 public class PlanoContaDTO {
 	
 	private Long idPlanoConta;

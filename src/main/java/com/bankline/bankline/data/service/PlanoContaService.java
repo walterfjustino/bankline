@@ -3,6 +3,8 @@ package com.bankline.bankline.data.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import com.bankline.bankline.data.dto.PlanoContaDTO;
 import com.bankline.bankline.data.dto.PlanoContaFormDTO;
 import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
 import com.bankline.bankline.data.model.PlanoConta;
+import com.bankline.bankline.data.model.Usuario;
 import com.bankline.bankline.data.repository.PlanoContaRepository;
 
 @Service
@@ -38,14 +41,17 @@ public class PlanoContaService {
 		
 	}
 	
+	@Transactional
 	private PlanoConta fromCreateDto(PlanoContaFormDTO planoConta) throws UsuarioNaoEncontradoException {
+		
+		Usuario user = usuarioService.buscar(planoConta.getLogin());
 		
 		PlanoConta pc = PlanoConta.builder()
 								.descPlanoConta(planoConta.getDescricao())
 								.isAtivoPlanoConta(planoConta.isAtivo())
 								.isPadrao(planoConta.isPadrao())
 								.tpPlanoConta(planoConta.getTipo())
-								.usuarioCriador(usuarioService.buscar(planoConta.getLogin()))
+								.usuarioCriador(user)
 								.idPlanoConta(planoConta.getId() == null ? null : planoConta.getId())
 								.build();
 		

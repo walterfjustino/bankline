@@ -85,6 +85,7 @@ public class UsuarioService {
 				.login(usuarioDTO.getLogin())
 				.isRedefinirSenha(false)
 				.dataUltimoLogin(null)
+				.isAtivo(true)
 				.usuarioLogin(UsuarioLogin.builder().senha(this.passwordEncoder.encode(usuarioDTO.getSenha()))
 						.username(usuarioDTO.getLogin()).role(RoleEnum.CLIENTE).build())
 				.build();
