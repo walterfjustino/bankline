@@ -16,8 +16,7 @@ import lombok.Data;
 public class PlanoContaDTO {
 	
 	private Long idPlanoConta;
-	
-	
+		
 	@Max(value = 15)
 	private String descPlanoConta;
 	
@@ -32,9 +31,6 @@ public class PlanoContaDTO {
 	
 	@NotBlank
 	private String login;
-	
-	
-	public List<Transacao> transacoesPlanoConta;
 	
 
 
