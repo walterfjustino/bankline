@@ -3,7 +3,6 @@ package com.bankline.bankline.data.controller;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +25,7 @@ public class DashboardController {
 	public ResponseEntity<?> dashboardAccounts(@RequestHeader("inicio") Date dtInicial,
 											   @RequestHeader("fim") Date dtFinal, 
 											   @RequestHeader("login") String login){
-		
-		System.out.println(login);
+
 		
 		try {
 			DashboardDTO dto = dashboard.montar(dtInicial, dtFinal, login);
