@@ -29,8 +29,10 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/", "/h2-console/**").permitAll().and().authorizeRequests()
-				.antMatchers("/console/**").permitAll().antMatchers(HttpMethod.GET, "/api/usuarios")
-				.hasRole(RoleEnum.CLIENTE.getName()).and().sessionManagement()
+				.antMatchers("/console/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/usuarios", "/api/listarPlanosConta", "/api/dashboard").hasRole(RoleEnum.CLIENTE.getName())
+				.antMatchers(HttpMethod.POST, "/api/listarPlanosConta", "/api/lancamentos", "api/alteraSenha", "api/novaSenha").hasRole(RoleEnum.CLIENTE.getName())
+				.and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().cors().disable().csrf().disable()
 				.exceptionHandling().authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)).and()
 				.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

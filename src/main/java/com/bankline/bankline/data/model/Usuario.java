@@ -58,6 +58,7 @@ public class Usuario {
 	private UsuarioLogin usuarioLogin;
 	
 	@OneToMany(mappedBy = "usuarioCriador")
+	@JsonIgnore
 	private List<PlanoConta> planosConta;
 
 }
