@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bankline.bankline.data.dto.TransacaoDTO;
+
 import com.bankline.bankline.data.exception.LoginNaoPertenceAContaException;
 import com.bankline.bankline.data.exception.SaldoInsulficienteException;
 import com.bankline.bankline.data.exception.TransFerenciaSemDestinoException;
-import com.bankline.bankline.data.model.Transacao;
+import com.bankline.bankline.data.entity.Transacao;
 import com.bankline.bankline.data.service.TransacaoService;
 
 @RestController
@@ -22,7 +22,7 @@ public class LancamentosController {
 	@Autowired
 	private TransacaoService transacaoService;
 	
-	/** "?" curinga, o tipo de responsta ddo controlador aceitará ambos. **/
+/*	*//** "?" curinga, o tipo de responsta ddo controlador aceitará ambos. **//*
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> newTransaction(TransacaoDTO lancamento){
 		
@@ -42,7 +42,7 @@ public class LancamentosController {
 		}
 
 	}
-	
+	*/
 	
 	//public ResponseEntity<List<PlanoContaDTO>> getPlanosConta(String login){	
 	//}

@@ -1,15 +1,8 @@
 package com.bankline.bankline.data.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import com.bankline.bankline.data.dto.UsuarioDTO;
-import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
-import com.bankline.bankline.data.model.Conta;
-import com.bankline.bankline.data.model.Usuario;
-import com.bankline.bankline.data.repository.UsuarioRepository;
 
-@Service
+/*@Service
 public class UsuarioService {
 
 	@Autowired
@@ -99,16 +92,16 @@ public class UsuarioService {
 	}
 	
 	public UsuarioDTO fromCreateModel(Usuario model, boolean precisaSenha) {
-		
+
 		UsuarioDTO dto = UsuarioDTO.builder()
 				.cpf(model.getCpf())
 				.login(model.getLogin())
 				.nome(model.getNome())
 				.senha(precisaSenha ? model.getSenha() : null)
 				.build();
-		
+
 		return dto;
-		
+
 	}
 
-}
+}*/

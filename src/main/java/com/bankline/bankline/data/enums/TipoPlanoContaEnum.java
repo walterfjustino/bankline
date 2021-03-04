@@ -1,10 +1,16 @@
 package com.bankline.bankline.data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum TipoPlanoContaEnum {
 	
-	RECEITA,
-	DESPESA,
-	TRANSFERENCIA
-	
+	R("RECEITA"),	D("DESPESA"),	T("TRANSFERENCIA");
+
+	private final String valor;
 
 }
+
+

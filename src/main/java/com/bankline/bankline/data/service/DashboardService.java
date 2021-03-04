@@ -6,16 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bankline.bankline.data.dto.DashboardDTO;
-import com.bankline.bankline.data.dto.TransacaoDTO;
-import com.bankline.bankline.data.dto.UsuarioDTO;
+
 import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
-import com.bankline.bankline.data.model.Usuario;
+import com.bankline.bankline.data.entity.Usuario;
 
 @Service
 public class DashboardService {
 	
-	@Autowired
+/*	@Autowired
 	private UsuarioService usuarioService;
 	
 	@Autowired
@@ -34,6 +32,6 @@ public class DashboardService {
 		
 		return dto;
 		
-	}
+	}*/
 
 }

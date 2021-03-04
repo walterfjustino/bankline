@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.bankline.bankline.data.model.Conta;
-import com.bankline.bankline.data.model.PlanoConta;
-import com.bankline.bankline.data.model.Transacao;
+import com.bankline.bankline.data.entity.Conta;
+import com.bankline.bankline.data.entity.PlanoConta;
+import com.bankline.bankline.data.entity.Transacao;
 
 @Repository
 public interface TransacaoRepository extends JpaRepository<Transacao, Long> {

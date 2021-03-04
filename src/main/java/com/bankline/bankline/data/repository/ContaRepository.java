@@ -4,13 +4,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.bankline.bankline.data.model.Conta;
+import com.bankline.bankline.data.entity.Conta;
 
 @Repository
 public interface ContaRepository extends JpaRepository<Conta, Long> {
 	
 	@Query("SELECT c FROM Conta c WHERE c.dono.login = :login")
-	
 	Conta findbyDonoLogin(String login);
 
 }

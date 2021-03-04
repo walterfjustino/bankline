@@ -1,5 +1,5 @@
 package com.bankline.bankline.data.controller;
-
+/*
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.bankline.bankline.data.dto.UsuarioDTO;
-import com.bankline.bankline.data.model.Usuario;
+import com.bankline.bankline.data.entity.Usuario;
 import com.bankline.bankline.data.service.UsuarioService;
 
 @RestController
@@ -33,3 +33,4 @@ public class UsuarioController {
 	}
 
 }
+*/

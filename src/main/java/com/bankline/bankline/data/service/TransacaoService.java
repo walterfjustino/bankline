@@ -1,37 +1,49 @@
 package com.bankline.bankline.data.service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import com.bankline.bankline.data.entity.Conta;
+import com.bankline.bankline.data.model.TransacaoModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.bankline.bankline.data.dto.TransacaoDTO;
-import com.bankline.bankline.data.enums.TipoPlanoContaEnum;
-import com.bankline.bankline.data.exception.LoginNaoPertenceAContaException;
-import com.bankline.bankline.data.exception.SaldoInsulficienteException;
-import com.bankline.bankline.data.exception.TransFerenciaSemDestinoException;
-import com.bankline.bankline.data.model.Conta;
-import com.bankline.bankline.data.model.PlanoConta;
-import com.bankline.bankline.data.model.Transacao;
+import com.bankline.bankline.data.entity.Transacao;
 import com.bankline.bankline.data.repository.ContaRepository;
 import com.bankline.bankline.data.repository.PlanoContaRepository;
 import com.bankline.bankline.data.repository.TransacaoRepository;
 
 @Service
 public class TransacaoService {
-	
+
 	@Autowired
-	private TransacaoRepository repository;
-	
-	@Autowired
-	private ContaRepository contaRepository;
-	
+	private TransacaoRepository transacaoRepository;
+
+
+	private final ContaRepository contaRepository;
+
 	@Autowired
 	private PlanoContaRepository planoContaRepository;
-	
-	public Transacao salvar(TransacaoDTO dto) throws LoginNaoPertenceAContaException, 
+
+	@Autowired
+	TransacaoService(TransacaoRepository transacaoRepository, ContaRepository contaRepository,
+					 PlanoContaRepository planoContaRepository) {
+		this.transacaoRepository = transacaoRepository;
+		this.contaRepository = contaRepository;
+		this.planoContaRepository = planoContaRepository;
+
+	}
+}
+
+
+
+
+//	PlanoConta planoConta = this.planoContaRepository.findById(transacaoModel.getPlanoConta()).get();
+//	if(transacaoRepository.exists){
+
+
+//	Conta conta = this.contaRepository.findById(.get();
+//	PlanoConta planoConta = this.planoContaRepository.findById(transacaoModel.getPlanoConta()).get();
+//	if(transacaoRepository.exists){
+
+/*
+	public Transacao salvar(TransacaoDTO dto) throws LoginNaoPertenceAContaException,
 													 TransFerenciaSemDestinoException,
 													 SaldoInsulficienteException {
 		
@@ -67,9 +79,11 @@ public class TransacaoService {
 		
 		Transacao transacao = new Transacao();
 		
-		/*
+		*/
+/*
 		 * Calculando o saldo final da conta origem após a transação
-		 */
+		 *//*
+
 		
 		if(planoConta.getTpPlanoConta().equals(TipoPlanoContaEnum.RECEITA)) {
 			
@@ -81,9 +95,11 @@ public class TransacaoService {
 			
 		}
 		
-		/*
+		*/
+/*
 		 * Preenchendo o objeto transação
-		 */
+		 *//*
+
 		
 		transacao.setValorTransacao(dto.getValor());
 		transacao.setPlanoContaTransacao(planoConta);
@@ -91,9 +107,11 @@ public class TransacaoService {
 		transacao.setDescricaoTransacao(dto.getDescricao());
 		transacao.setDtLancamentoTransacao(dto.getDtLancamentoTransacao());
 		
-		/*
+		*/
+/*
 		 * Se a transação for uma transferência, calculando o saldo final da conta destino e adicionando ao objeto a ser persistido.
-		 */
+		 *//*
+
 		
 		if(planoConta.getTpPlanoConta().equals(TipoPlanoContaEnum.TRANSFERENCIA)) {
 			
@@ -127,3 +145,4 @@ public class TransacaoService {
 	}
 	
 }
+*/

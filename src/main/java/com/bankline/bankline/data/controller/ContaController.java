@@ -1,9 +1,10 @@
 package com.bankline.bankline.data.controller;
 
+
 import com.bankline.bankline.data.model.ContaModel;
-import com.bankline.bankline.data.model.DashboardModel;
 import com.bankline.bankline.data.model.Response;
-import com.bankline.bankline.data.service.DashboardService;
+import com.bankline.bankline.data.service.ContaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,20 +15,26 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/api/dashboard")
-public class DashboardController {
+@RequestMapping("/api/conta")
+public class ContaController {
 
 
-  /*  private DashboardService dashboardService;
+    @Autowired
+    public ContaService contaService;
+
+
+
+
+
 
     //Cadastrar Conta
     @PostMapping
-    public ResponseEntity<Response<Boolean>> get(@Valid @RequestBody DashboardModel dashboardModel) {
+    public ResponseEntity<Response<Boolean>> cadastrar(@Valid @RequestBody ContaModel conta) {
         Response<Boolean> response = new Response<>();
-        response.setData(dashboardService.(d));
+        response.setData(contaService.cadastrar(conta));
         response.setStatusCode(HttpStatus.CREATED.value());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-	*/
+
 
 }

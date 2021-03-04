@@ -1,4 +1,4 @@
-package com.bankline.bankline.data.dto;
+package com.bankline.bankline.data.model;
 
 import java.util.List;
 
@@ -6,18 +6,19 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 
 import com.bankline.bankline.data.enums.TipoPlanoContaEnum;
-import com.bankline.bankline.data.model.Transacao;
+import com.bankline.bankline.data.entity.Transacao;
 
-import lombok.Builder;
+
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Builder
 @Data
-public class PlanoContaDTO {
+@NoArgsConstructor
+public class PlanoContaModel {
 	
 	private Long idPlanoConta;
-	
-	
+
+	@NotBlank
 	@Max(value = 15)
 	private String descPlanoConta;
 	
