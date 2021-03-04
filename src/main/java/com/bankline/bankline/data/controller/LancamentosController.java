@@ -15,7 +15,7 @@ import com.bankline.bankline.data.model.Transacao;
 import com.bankline.bankline.data.service.TransacaoService;
 
 @RestController
-@RequestMapping(value = "/api/lancamentos")
+@RequestMapping(value = "/api")
 public class LancamentosController {
 	
 	
@@ -23,7 +23,7 @@ public class LancamentosController {
 	private TransacaoService transacaoService;
 	
 	/** "?" curinga, o tipo de responsta ddo controlador aceitará ambos. **/
-	@PostMapping
+	@PostMapping("/lancamentos")
 	public ResponseEntity<?> newTransaction(TransacaoDTO lancamento){
 		try {
 			Transacao transacao = transacaoService.salvar(lancamento);

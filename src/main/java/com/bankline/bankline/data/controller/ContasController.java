@@ -7,13 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bankline.bankline.data.service.ContaService;
 
 @RestController
-@RequestMapping(value = "api/contas")
 public class ContasController {
 	
 	@Autowired
 	private ContaService contaService;
-	
-	
-	
 
 }

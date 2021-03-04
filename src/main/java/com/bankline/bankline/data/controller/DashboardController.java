@@ -16,13 +16,13 @@ import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
 import com.bankline.bankline.data.service.DashboardService;
 
 @RestController
-@RequestMapping(value = "/api/dashboard")
+@RequestMapping(value = "/api")
 public class DashboardController {
 	
 	@Autowired
 	private DashboardService dashboard;
 	
-	@GetMapping
+	@GetMapping("/dashboard")
 	public ResponseEntity<?> dashboardAccounts(@RequestHeader("inicio") Date dtInicial,
 											   @RequestHeader("fim") Date dtFinal, 
 											   @RequestHeader("login") String login){

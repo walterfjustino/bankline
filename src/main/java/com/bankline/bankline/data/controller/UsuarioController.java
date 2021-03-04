@@ -22,14 +22,14 @@ import com.bankline.bankline.data.model.Usuario;
 import com.bankline.bankline.data.service.UsuarioService;
 
 @RestController
-@RequestMapping(value = "/api/usuarios")
+@RequestMapping(value = "/api")
 public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
 
 
-	@PostMapping
+	@PostMapping("/usuarios")
 	public ResponseEntity<?> newUser(@RequestBody UsuarioDTO usuarioDto) {
 		Usuario savedUsuario = this.usuarioService.cadastrar(usuarioDto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUsuario.getId())
