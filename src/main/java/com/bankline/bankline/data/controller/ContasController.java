@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bankline.bankline.data.dto.PlanoContaDTO;
+import com.bankline.bankline.data.dto.PlanoContaFormDTO;
 import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
 import com.bankline.bankline.data.model.PlanoConta;
 import com.bankline.bankline.data.model.Usuario;
@@ -28,10 +29,13 @@ public class ContasController {
 	private PlanoContaRepository planoContaRepository;
 	
 	@PostMapping("/novoPlanoConta")
-	public ResponseEntity<?> novoPlanoConta(PlanoContaDTO planoConta) {
+	public ResponseEntity<?> novoPlanoConta(PlanoContaFormDTO planoConta) {
+		
 		try {	
-			planoConta = planoContaService.salvarPlanoConta(planoConta);
-			return ResponseEntity.status(HttpStatus.CREATED).body(planoConta);
+			
+			PlanoContaDTO dto = planoContaService.salvarPlanoConta(planoConta);
+			
+			return ResponseEntity.status(HttpStatus.CREATED).body(dto);
 			
 		} catch (UsuarioNaoEncontradoException log) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(log.getMessage());
