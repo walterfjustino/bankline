@@ -27,7 +27,7 @@ public class ContasController {
 	@Autowired
 	private PlanoContaRepository planoContaRepository;
 	
-	@PostMapping
+	@PostMapping("/novoPlanoConta")
 	public ResponseEntity<?> novoPlanoConta(PlanoContaDTO planoConta) {
 		try {	
 			planoConta = planoContaService.salvarPlanoConta(planoConta);
@@ -39,7 +39,7 @@ public class ContasController {
 		
 	}
 	
-	@GetMapping
+	@GetMapping("/listarPlanosConta")
 	public ResponseEntity<List<PlanoConta>> listarPlanosConta(Usuario usuario){
 		List<PlanoConta> listaPlanos = planoContaRepository.findPlanoContaDisponiveis(usuario);
 		return ResponseEntity.status(HttpStatus.OK).body(listaPlanos);

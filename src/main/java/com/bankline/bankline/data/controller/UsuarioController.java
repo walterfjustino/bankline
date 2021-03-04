@@ -39,7 +39,7 @@ public class UsuarioController {
 
 	}
 	
-	@PostMapping("/altera-senha")
+	@PostMapping("/alteraSenha")
 	public ResponseEntity<?> alterarSenha(@RequestBody UsuarioAlterarSenhaDTO dto) {
 		
 		try {
@@ -52,16 +52,14 @@ public class UsuarioController {
 	
 	}
 	
-	@PostMapping("/nova-senha")
+	@PostMapping("/novaSenha")
 	public ResponseEntity<?> renovarSenha(@RequestBody UsuarioNovaSenhaDTO dto) {
 		
 		NovaSenhaRespostaDTO resposta = NovaSenhaRespostaDTO.builder()
 					.email(dto.getEmail())
 					.senhaTemp("12345")
-					.build();
-		
-		try {
-			
+					.build();		
+		try {			
 			return usuarioService.solicitarNovaSenha(dto) ? ResponseEntity.ok(resposta) : null;
 
 		} catch (UsuarioNaoEncontradoException e) {
