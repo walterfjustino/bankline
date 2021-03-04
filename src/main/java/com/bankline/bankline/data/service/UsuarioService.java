@@ -1,5 +1,7 @@
 package com.bankline.bankline.data.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
 import com.bankline.bankline.data.model.Usuario;
 import com.bankline.bankline.data.model.UsuarioLogin;
 import com.bankline.bankline.data.repository.UsuarioRepository;
+
 
 @Service
 public class UsuarioService {
@@ -103,5 +106,9 @@ public class UsuarioService {
 		return dto;
 
 	}
+	
+    public List<Usuario> findAll() {
+        return this.usuarioRepository.findAll();
+    }
 
 }

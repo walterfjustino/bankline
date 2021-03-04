@@ -34,7 +34,7 @@ public class Usuario {
 	private String nome;
 
 	private String cpf;
-	
+
 	private String login;
 
 	@Column(name = "is_redefinir_senha")
@@ -47,8 +47,9 @@ public class Usuario {
 	private Boolean isAtivo;
 
 	@OneToOne(mappedBy = "dono", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Conta conta;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "usuario_id", nullable = false)
 	@JsonIgnore

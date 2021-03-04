@@ -21,7 +21,7 @@ import io.jsonwebtoken.security.Keys;
 public class JWTUtil {
 
     private static final SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
-    @Value("1000")
+    @Value("10000000")
     private Long JWT_VALIDITY;
 
     public String generateToken(UsuarioLogin user) {

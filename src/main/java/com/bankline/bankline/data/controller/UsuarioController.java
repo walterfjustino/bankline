@@ -1,12 +1,12 @@
 package com.bankline.bankline.data.controller;
 
 import java.net.URI;
-
-import javax.validation.Valid;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +20,7 @@ import com.bankline.bankline.data.dto.UsuarioNovaSenhaDTO;
 import com.bankline.bankline.data.exception.UsuarioNaoEncontradoException;
 import com.bankline.bankline.data.model.Usuario;
 import com.bankline.bankline.data.service.UsuarioService;
+
 
 @RestController
 @RequestMapping(value = "/api")
@@ -69,5 +70,11 @@ public class UsuarioController {
 		}
 	
 	}
+	
+    @GetMapping("/usuarios")
+    public ResponseEntity<List<Usuario>> findAll() {
+        List<Usuario> allUsers = this.usuarioService.findAll();
+        return ResponseEntity.ok(allUsers);
+    }
 
 }
